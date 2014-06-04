@@ -1,3 +1,6 @@
-# Init.el
+=======
+.emacs.d
+========
 
-Here is my personal emacs config.
+My personal emacs config
+
