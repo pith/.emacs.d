@@ -1,0 +1,129 @@
+;; ido (https://github.com/gempesaw/ido-vertical-mode.el)
+(require 'ido-vertical-mode)
+(setq ido-enable-flex-matching t)
+(require 'ido)
+  (ido-vertical-mode 1)
+
+;; Smex (https://github.com/nonsequitur/smex)
+(require 'smex) 
+(smex-initialize)
+
+;; ibuffer (http://emacs-fu.blogspot.fr/2010/02/dealing-with-many-buffers-ibuffer.html)
+(require 'ibuffer) 
+(setq ibuffer-saved-filter-groups
+  (quote (("default"      
+            ("Org" ;; all org-related buffers
+              (mode . org-mode))  
+            ("Emacs config"
+              (filename . ".emacs.d/"))
+            ("Markdown"
+              (mode . markdown-mode))  
+            ("Mail"
+              (or  ;; mail-related buffers
+               (mode . message-mode)
+               (mode . mail-mode)
+               ;; etc.; all your mail related modes
+               ))
+            ("Programming" ;; prog stuff
+              (or
+                (mode . java-mode)
+                (mode . go-mode)
+                (mode . docker-mode)
+                (mode . emacs-lisp-mode)
+                ;; etc
+                )) 
+            ("ERC"   (mode . erc-mode))))))
+
+(add-hook 'ibuffer-mode-hook
+  (lambda ()
+    (ibuffer-switch-to-saved-filter-groups "default")))
+
+                 
+(global-set-key (kbd "M-x") 'smex)
+;; Show only major mode commands
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;; This is your old M-x.
+(global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(blink-cursor-mode nil)
+ '(custom-enabled-themes (quote (wombat)))
+ '(grep-find-ignored-directories (quote ("SCCS" "RCS" "CVS" "MCVS" ".svn" ".git" ".hg" ".bzr" "_MTN" "_darcs" "{arch}" ".DS_Store")))
+ '(ido-mode (quote both) nil (ido))
+ '(menu-bar-mode nil)
+ '(menu-prompting nil)
+ '(ns-alternate-modifier (quote none))
+ '(ns-function-modifier (quote meta))
+ '(package-archives (quote (("gnu" . "http://elpa.gnu.org/packages/") ("melpa" . "http://melpa.milkbox.net/packages/"))))
+ '(scroll-bar-mode nil)
+ '(tool-bar-mode nil)
+ '(tool-bar-style (quote text))
+ '(uniquify-buffer-name-style (quote post-forward-angle-brackets) nil (uniquify)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "apple" :family "Monaco")))))
+
+;;;;;;;;;;;;;
+;; Editor
+
+;; newline-withoug-break-of-line
+(defun newline-without-break-of-line ()
+  "1. remove to end of the line.
+  2. insert newline with index"
+
+  (interactive)
+  (let ((oldpos (point)))
+    (end-of-line)
+    (newline-and-indent)))
+
+(global-set-key (kbd "<S-return>") 'newline-without-break-of-line)
+;;
+
+;; Change the buffer list
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+
+
+(defun pit-duplicate-line-or-region ()
+  "Copy current line, or current text selection."
+  (interactive)
+  (let ((oldpos (point)))
+  (if (region-active-p)
+      (setq myString region-beginning region-end)
+    (setq myString (buffer-substring (line-beginning-position) (line-end-position))))
+  (newline-without-break-of-line)
+  (insert myString)
+  (goto-char oldpos)
+  (forward-line 1))
+)
+
+(global-set-key (kbd "C-c C-y") 'pit-duplicate-line-or-region)
+
+
+
+(defun pit-kill-current-line ()
+  "Kill the current line."
+  (interactive)
+;; grab the start and end positions of a word (or any other thing)
+(setq myBoundaries (bounds-of-thing-at-point 'line))
+
+;; get the beginning and ending positions
+(setq p1 (car myBoundaries))
+(setq p2 (cdr myBoundaries))
+
+;; grab it
+(setq myStr (buffer-substring-no-properties p1 p2))
+
+;; delete region
+(kill-region p1 p2))
+
+(global-set-key (kbd "C-c C-d") 'pit-kill-current-line)
+;;
+
