@@ -89,7 +89,7 @@
 ;; Change the buffer list
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-
+;; The following is a work in progress
 
 (defun pit-duplicate-line-or-region ()
   "Copy current line, or current text selection."
