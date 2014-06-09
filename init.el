@@ -1,12 +1,17 @@
+(load "~/.emacs.d/eldoc.el")
+
+;; WindMove (http://www.emacswiki.org/emacs/WindMove)
+(when (fboundp 'windmove-default-keybindings)
+  (windmove-default-keybindings))
+
+;; uniquify (http://www.emacswiki.org/emacs/uniquify)
+(require 'uniquify)
+
 ;; ido (https://github.com/gempesaw/ido-vertical-mode.el)
 (require 'ido-vertical-mode)
 (setq ido-enable-flex-matching t)
 (require 'ido)
   (ido-vertical-mode 1)
-
-;; Smex (https://github.com/nonsequitur/smex)
-(require 'smex) 
-(smex-initialize)
 
 ;; ibuffer (http://emacs-fu.blogspot.fr/2010/02/dealing-with-many-buffers-ibuffer.html)
 (require 'ibuffer) 
@@ -38,12 +43,73 @@
   (lambda ()
     (ibuffer-switch-to-saved-filter-groups "default")))
 
-                 
+
+;; Smex (https://github.com/nonsequitur/smex)
+(require 'smex) 
+(smex-initialize)
+
+;; smex
 (global-set-key (kbd "M-x") 'smex)
-;; Show only major mode commands
+  ;; Show only major mode commands
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;; This is your old M-x.
+  ;; This is your old M-x.
 (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Emacs lisp configuration
+
+(require 'eldoc)
+(eldoc-add-command 'paredit-backward-delete 'paredit-close-round)
+
+;; Active show parent mode
+(show-paren-mode 1)
+
+;; Electric RETURN
+ (defvar electrify-return-match
+    "[\]}\)\"]"
+    "If this regexp matches the text after the cursor, do an \"electric\"
+  return.")
+
+(defun electrify-return-if-match (arg)
+    "If the text after the cursor matches `electrify-return-match' then
+  open and indent an empty line between the cursor and the text.  Move the
+  cursor to the new line."
+    (interactive "P")
+    (let ((case-fold-search nil))
+      (if (looking-at electrify-return-match)
+	  (save-excursion (newline-and-indent)))
+      (newline arg)
+      (indent-according-to-mode)))
+
+;; Using local-set-key in a mode-hook is a better idea.
+;;  (global-set-key (kbd "RET") 'electrify-return-if-match)
+
+(defun pit-elisp-mode ()
+  (interactive)
+  (paredit-mode t)
+  (turn-on-eldoc-mode)
+  (eldoc-add-command
+   'paredit-backward-delete
+   'paredit-close-round)
+;;  (local-set-key (kbd "RET") 'electrify-return-if-match)
+;;  (eldoc-add-command 'electrify-return-if-match)
+  (show-paren-mode t)  
+)
+(add-hook 'emacs-lisp-mode-hook 'pit-elisp-mode)
+(add-hook 'eval-expression-minibuffer-setup-hook 'pit-elisp-mode)
+(add-hook 'ielm-mode-hook             'pit-elisp-mode)
+(add-hook 'lisp-mode-hook             'pit-elisp-mode)
+(add-hook 'lisp-interaction-mode-hook 'pit-elisp-mode)
+(add-hook 'scheme-mode-hook           'pit-elisp-mode)
+
+;; Auto complete
+(add-to-list 'load-path "/Users/pith/.emacs.d/")
+(require 'auto-complete-config)
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
+(ac-config-default)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -70,8 +136,8 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "apple" :family "Monaco")))))
 
-;;;;;;;;;;;;;
-;; Editor
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Custom edition functions
 
 ;; newline-withoug-break-of-line
 (defun newline-without-break-of-line ()
@@ -126,4 +192,21 @@
 
 (global-set-key (kbd "C-c C-d") 'pit-kill-current-line)
 ;;
+
+;; move line up
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (previous-line 2))
+
+(global-set-key (kbd "M-p") 'move-line-up)
+
+;; move line down
+(defun move-line-down ()
+  (interactive)
+  (next-line 1)
+  (transpose-lines 1)
+  (previous-line 1))
+
+(global-set-key (kbd "M-n") 'move-line-down)
 
