@@ -35,8 +35,9 @@
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 120 :width normal :foundry "apple" :family "Monaco")))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-(load "~/.emacs.d/eldoc.el")
+(require 'eldoc)
+(add-to-list 'load-path "~/.emacs.d/elisp/")
+(load-library "eldoc")
 
 ;; WindMove (http://www.emacswiki.org/emacs/WindMove)
 (when (fboundp 'windmove-default-keybindings)
@@ -97,9 +98,6 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Emacs lisp configuration
 
-(require 'eldoc)
-(eldoc-add-command 'paredit-backward-delete 'paredit-close-round)
-
 ;; Active show parent mode
 (show-paren-mode 1)
 
@@ -126,12 +124,6 @@
 (defun pit-elisp-mode ()
   (interactive)
   (paredit-mode t)
-  (turn-on-eldoc-mode)
-  (eldoc-add-command
-   'paredit-backward-delete
-   'paredit-close-round)
-;;  (local-set-key (kbd "RET") 'electrify-return-if-match)
-;;  (eldoc-add-command 'electrify-return-if-match)
   (show-paren-mode t)  
 )
 (add-hook 'emacs-lisp-mode-hook 'pit-elisp-mode)
