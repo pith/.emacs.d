@@ -1,10 +1,9 @@
 (require 'use-package)
 
+(use-package monokai-theme
+  :ensure t)
+
 (use-package auto-complete
-  :idle (progn
-         (ac-config-default)
-         (ac-fuzzy-complete)
-         )
   :ensure t)
 
 (use-package helm
@@ -78,6 +77,9 @@
       (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
       )
     :ensure t)
+
+(use-package paredit
+  :ensure t)
 
 (provide 'load-packages)
 

@@ -1,4 +1,4 @@
-;;; elisp-mode.el --- Custom configuration for lisp mode
+;;; pit-elisp-mode.el --- Custom configuration for lisp mode
 
 ;;; Commentary:
 ;; This mode enable paredit, show-parent-mode, electrify-return-match.
@@ -44,4 +44,4 @@ Argument ARG ending block caracter (eg. ')' for lisp)."
 
 (provide 'pit-elisp-mode)
 
-;;; elisp-mode.el ends here
+;;; pit-elisp-mode.el ends here
