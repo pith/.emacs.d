@@ -3,7 +3,7 @@
 (use-package monokai-theme
   :ensure t)
 
-(use-package auto-complete
+(use-package magit
   :ensure t)
 
 (use-package helm
@@ -14,6 +14,18 @@
   (progn
     (helm-mode)
     (setq helm-buffers-fuzzy-matching t))
+  :ensure t)
+
+(use-package auto-complete
+  :ensure t)
+
+(use-package mkdown
+  :init (setq markdown-css-path mkdown-css-file-name)
+  :ensure t)
+
+(use-package markdown-mode
+  :mode ("\\.md\\'" . markdown-mode)
+  :interpreter ("markdown" . markdown-mode)
   :ensure t)
 
 (use-package eldoc

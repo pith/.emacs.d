@@ -2,7 +2,7 @@
 
 My personal emacs config.
 
-## List of enabled packages
+## List of installed packages
 
 - ido (http://www.emacswiki.org/emacs/InteractivelyDoThings)
 - ido-vertical-mode (https://github.com/gempesaw/ido-vertical-mode.el)
