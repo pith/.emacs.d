@@ -51,7 +51,7 @@
 ;; delete region
 (kill-region p1 p2))
 
-(global-set-key (kbd "C-c C-d") 'pit-kill-current-line)
+(global-set-key (kbd "C-c C-k") 'pit-kill-current-line)
 ;;
 
 ;; move line up

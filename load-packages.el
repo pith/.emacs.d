@@ -1,9 +1,15 @@
 (require 'use-package)
 
+; UI
+
 (use-package monokai-theme
   :ensure t)
 
-(use-package magit
+; Navigation
+
+(use-package ace-jump-mode
+  :bind (("C-c SPC" . ace-jump-word-mode)
+         ("C-c C-SPC" . ace-jump-word-mode))
   :ensure t)
 
 (use-package helm
@@ -17,26 +23,71 @@
   :ensure t)
 
 (use-package projectile
-  :init (projectile-global-mode)
+  :init (progn
+          (projectile-global-mode)
+          (setq projectile-enable-caching t)
+          )
   :ensure t)
 
 (use-package helm-projectile
   :ensure t)
 
+(use-package magit
+  :bind ("C-c C-g" . magit-status)
+  :ensure t)
+
+; editor
+
 (use-package auto-complete
   :ensure t)
 
-(use-package mkdown
-  :init (setq markdown-css-path mkdown-css-file-name)
+(use-package expand-region
+  :bind (
+          ("C-=" . er/expand-region)
+          ("C-+" . er/contract-region))
   :ensure t)
+
+; modes
 
 (use-package markdown-mode
   :mode ("\\.md\\'" . markdown-mode)
   :interpreter ("markdown" . markdown-mode)
   :ensure t)
 
+(use-package mkdown
+  :init (setq markdown-css-path mkdown-css-file-name)
+  :ensure t)
+
+(use-package dockerfile-mode
+  :mode ("Dockerfile\\'" . dockerfile-mode)
+  :interpreter ("dockerfile" . dockerfile-mode)
+  :ensure t)
+
+(use-package gitconfig-mode
+  :mode ("\\.gitconfig\\'" . gitconfig-mode)
+  :interpreter ("gitconfig" . gitconfig-mode)
+  :ensure t)
+
+(use-package gitignore-mode
+  :mode ("\\.gitignore\\'" . gitignore-mode)
+  :interpreter ("gitignore" . gitignore-mode)
+  :ensure t)
+
+; lisp
+
+(use-package elisp-slime-nav
+  :bind (("C-;" . elisp-slime-nav-find-elisp-thing-at-point)
+         ("C-c C-d C-d" . elisp-slime-nav-describe-elisp-thing-at-point)
+         ("C-c C-d d" . elisp-slime-nav-describe-elisp-thing-at-point))
+  :ensure t)
+
 (use-package eldoc
     :ensure t)
+
+(use-package request
+  :ensure t)
+
+; Global
 
 ;; ido (https://github.com/gempesaw/ido-vertical-mode.el)
 (use-package ido-vertical-mode
