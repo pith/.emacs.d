@@ -16,6 +16,13 @@
     (setq helm-buffers-fuzzy-matching t))
   :ensure t)
 
+(use-package projectile
+  :init (projectile-global-mode)
+  :ensure t)
+
+(use-package helm-projectile
+  :ensure t)
+
 (use-package auto-complete
   :ensure t)
 
