@@ -7,6 +7,13 @@
 
 ; Navigation
 
+(use-package guide-key
+  :init (progn
+          (setq guide-key/guide-key-sequence '("C-c" "C-x r" "C-x 4" "C-c C-d"))
+          (guide-key-mode 1))
+  :ensure t)
+
+
 (use-package ace-jump-mode
   :bind (("C-c SPC" . ace-jump-word-mode)
          ("C-c C-SPC" . ace-jump-word-mode))
@@ -26,6 +33,7 @@
   :init (progn
           (projectile-global-mode)
           (setq projectile-enable-caching t)
+          (add-to-list 'guide-key/guide-key-sequence "C-c p")
           )
   :ensure t)
 
@@ -49,6 +57,7 @@
   :ensure t)
 
 ; modes
+
 
 (use-package markdown-mode
   :mode ("\\.md\\'" . markdown-mode)
@@ -84,9 +93,6 @@
 
 (use-package eldoc
     :ensure t)
-
-(use-package request
-  :ensure t)
 
 ; Global
 
