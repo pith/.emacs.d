@@ -56,8 +56,7 @@
   :ensure t)
 
 ; modes
-(use-package plantuml-mode
-  :ensure t)
+
 
 (use-package markdown-mode
   :mode ("\\.md\\'" . markdown-mode)
