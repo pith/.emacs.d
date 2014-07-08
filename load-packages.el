@@ -30,6 +30,7 @@
   :ensure t)
 
 (use-package helm-projectile
+  :bind ("C-c h" . helm-projectile)
   :ensure t)
 
 (use-package magit
