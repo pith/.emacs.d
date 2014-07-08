@@ -9,7 +9,7 @@
 
 (use-package guide-key
   :init (progn
-          (setq guide-key/guide-key-sequence '("C-c" "C-x r" "C-x 4"))
+          (setq guide-key/guide-key-sequence '("C-c" "C-x r" "C-x 4" "C-c C-d"))
           (guide-key-mode 1))
   :ensure t)
 
@@ -56,6 +56,8 @@
   :ensure t)
 
 ; modes
+(use-package plantuml-mode
+  :ensure t)
 
 (use-package markdown-mode
   :mode ("\\.md\\'" . markdown-mode)
