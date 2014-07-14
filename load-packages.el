@@ -5,7 +5,7 @@
 (use-package monokai-theme
   :ensure t)
 
-; Navigation
+; help
 
 (use-package guide-key
   :init (progn
@@ -13,6 +13,14 @@
           (guide-key-mode 1))
   :ensure t)
 
+; Navigation
+
+(use-package multiple-cursors
+  :bind (("C-S-c C-S-c" . mc/edit-lines)
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-c C-<" . mc/mark-all-like-this))
+  :ensure t)
 
 (use-package ace-jump-mode
   :bind (("C-c SPC" . ace-jump-word-mode)
@@ -21,8 +29,7 @@
 
 (use-package helm
   :bind (("C-x b" . helm-buffers-list)
-	 ("C-x C-f" . helm-find-files)
-	 )
+	 ("C-x C-f" . helm-find-files))
   :init 
   (progn
     (helm-mode)
@@ -33,13 +40,14 @@
   :init (progn
           (projectile-global-mode)
           (setq projectile-enable-caching t)
-          (add-to-list 'guide-key/guide-key-sequence "C-c p")
-          )
+          (add-to-list 'guide-key/guide-key-sequence "C-c p"))
   :ensure t)
 
 (use-package helm-projectile
   :bind ("C-c h" . helm-projectile)
   :ensure t)
+
+; Version control
 
 (use-package magit
   :bind ("C-c C-g" . magit-status)
