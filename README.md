@@ -11,9 +11,9 @@ My personal emacs config.
 
 ## Useful key binding
 
-"C-c C-g" - git-status
-"C-="     - expand region
-"C-c C-<" - mc/mark-all-like-this
+- "C-c C-g" - git-status
+- "C-="     - expand region
+- "C-c C-<" - mc/mark-all-like-this
 
 ## Personal functions and key bindings
 
