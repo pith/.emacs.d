@@ -9,6 +9,12 @@ My personal emacs config.
 - smex (https://github.com/nonsequitur/smex)
 - ibuffer (http://emacs-fu.blogspot.fr/2010/02/dealing-with-many-buffers-ibuffer.html)
 
+## Useful key binding
+
+"C-c C-g" - git-status
+"C-="     - expand region
+"C-c C-<" - mc/mark-all-like-this
+
 ## Personal functions and key bindings
 
 ```lisp
