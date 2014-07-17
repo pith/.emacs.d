@@ -47,6 +47,14 @@
   :bind ("C-c h" . helm-projectile)
   :ensure t)
 
+(use-package helm-swoop
+  :bind (("M-i" . helm-swoop)
+         ("M-I" . helm-swoop-back-to-last-point)
+         ("C-c M-i" . helm-multi-swoop)
+         ("C-x M-i" . helm-multi-swoop-all))
+  :ensure t)
+
+
 ; Version control
 
 (use-package magit
@@ -59,10 +67,10 @@
   :ensure t)
 
 (use-package expand-region
-  :bind (
-          ("C-=" . er/expand-region)
+  :bind (("C-=" . er/expand-region)
           ("C-+" . er/contract-region))
   :ensure t)
+
 
 ; modes
 
