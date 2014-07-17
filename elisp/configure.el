@@ -1,4 +1,6 @@
-; Choose the theme
+; TODO reorganize this file.
+
+;Choose the theme
 (load-theme 'monokai t)
 
 ; WindMove (http://www.emacswiki.org/emacs/WindMove)

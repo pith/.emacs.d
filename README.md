@@ -4,18 +4,16 @@ My personal emacs config.
 
 ## List of installed packages
 
-- helm
-- smex (https://github.com/nonsequitur/smex)
-- ibuffer (http://emacs-fu.blogspot.fr/2010/02/dealing-with-many-buffers-ibuffer.html)
-
-TODO complete
+Packages are installed with `use-package.el`, if you want to see the list of installed packages go look at `load-packages.el`.
 
 ## Useful key binding
+This is just a start. But here is the list of useful key binding I don't want to forget. Those I already forgot, will appear later.
 
 *Navigation*
 
 * <kbd>C-c h</kbd> - helm-projectile
 * <kbd>C-c C-<SPC></kbd> - ace-jump
+* <kbd>M-i</kbd> - helm-swoop
 
 *Editor*
 
@@ -24,6 +22,7 @@ TODO complete
 
 *Lisp*
 
+* <kbd>C-c C-c</kbd> - eval-buffer
 * <kbd>C-M-q</kbd> - reformat
 * <kbd>C-c C-d C-d</kbd> - elisp-slime-nav-describe-elisp-thing-at-point
 * <kbd>C-;</kbd> - elisp-slime-nav-find-elisp-thing-at-point
@@ -32,9 +31,6 @@ TODO complete
 
 * <kbd>C-c C-g</kbd> - git-status
 
-## Personal functions and key bindings
+## Windows
 
-```lisp
-(global-set-key (kbd "<S-return>") 'newline-without-break-of-line)
-```
-
+On Windows, the `init.el` will look for a `~/proxy` file. 

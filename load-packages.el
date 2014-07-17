@@ -1,4 +1,10 @@
 (require 'use-package)
+(require 'bind-key)
+
+; Vital packages
+
+(use-package paredit
+  :ensure t)
 
 ; UI
 
@@ -110,6 +116,11 @@
 (use-package eldoc
     :ensure t)
 
+(use-package fic-mode
+  :ensure t)
+
+(bind-keys :map emacs-lisp-mode-map ("C-c C-c" . eval-buffer))
+
 ; Global
 
 ;; ido (https://github.com/gempesaw/ido-vertical-mode.el)
@@ -171,8 +182,7 @@
       )
     :ensure t)
 
-(use-package paredit
-  :ensure t)
+(bind-key "C-c C-l" 'helm-list-elisp-packages)
 
 (provide 'load-packages)
 
