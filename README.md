@@ -11,7 +11,8 @@ This is just a start. But here is the list of useful key binding I don't want to
 
 *Navigation*
 
-* <kbd>C-c h</kbd> - helm-projectile
+* <kbd>C-c C-l</kbd> - helm-list-elisp-packages
+* <Kbd>C-c h</kbd> - helm-projectile
 * <kbd>C-c C-<SPC></kbd> - ace-jump
 * <kbd>M-i</kbd> - helm-swoop
 
