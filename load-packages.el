@@ -169,19 +169,20 @@
     :ensure t)
 
 ;; Smex (https://github.com/nonsequitur/smex)
-(use-package smex
-    :config 
-    (progn
-      (smex-initialize)
-      ;; smex
-      (global-set-key (kbd "M-x") 'smex)
-      ;; Show only major mode commands
-      (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-      ;; This is your old M-x.
-      (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-      )
-    :ensure t)
+;; (use-package smex
+;;     :config 
+;;     (progn
+;;       (smex-initialize)
+;;       ;; smex
+;;       (global-set-key (kbd "M-x") 'smex)
+;;       ;; Show only major mode commands
+;;       (global-set-key (kbd "M-X") 'smex-major-mode-commands)
+;;       ;; This is your old M-x.
+;;       (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
+;;       )
+;;     :ensure t)
 
+(bind-key "M-x" 'helm-M-x)
 (bind-key "C-c C-l" 'helm-list-elisp-packages)
 
 (provide 'load-packages)
