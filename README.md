@@ -1,6 +1,6 @@
 # .emacs.d
 
-My personal emacs config.
+This is my personal emacs config which make an heavy use of `use-package` and `helm`.
 
 ## List of installed packages
 
@@ -31,6 +31,18 @@ This is just a start. But here is the list of useful key binding I don't want to
 *Version control*
 
 * <kbd>C-c C-g</kbd> - git-status
+
+## OS X
+
+Specific key binding for OS X.
+
+```elisp
+(when (eq system-type 'darwin)
+   ; Add special key binding
+  (setq mac-option-modifier 'none)
+  (setq mac-function-modifier 'meta)
+  )
+```
 
 ## Windows
 
