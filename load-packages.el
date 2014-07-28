@@ -105,6 +105,16 @@
   :interpreter ("gitignore" . gitignore-mode)
   :ensure t)
 
+(use-package syslog-mode
+  :mode ("/var/log.*\\'" . syslog-mode)
+  :interpreter ("syslog-mode" . syslog-mode)
+  :ensure t)
+
+(use-package log4j-mode
+  :mode ("\\.log\\" . log4j-mode)
+  :interpreter ("syslog-mode" . log4j-mode)
+  :ensure t)
+
 ; lisp
 
 (use-package elisp-slime-nav
