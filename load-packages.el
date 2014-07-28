@@ -33,6 +33,9 @@
          ("C-c C-SPC" . ace-jump-word-mode))
   :ensure t)
 
+(use-package guru-mode
+  :ensure t)
+
 (use-package helm
   :bind (("C-x b" . helm-buffers-list)
 	 ("C-x C-f" . helm-find-files))
