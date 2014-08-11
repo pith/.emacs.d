@@ -114,9 +114,14 @@
   :ensure t)
 
 (use-package log4j-mode
-  :mode ("\\.log\\" . log4j-mode)
+  :mode ("\\.log\\'" . log4j-mode)
   :interpreter ("syslog-mode" . log4j-mode)
   :ensure t)
+
+(use-package emacs-lisp-mode
+  :mode ("\\.el\\'" . emacs-lisp-mode)
+  :interpreter ("emacs-lisp-mode" . emacs-lisp-mode))
+
 
 ; lisp
 
