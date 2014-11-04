@@ -8,7 +8,10 @@
 
 ; UI
 
-(use-package monokai-theme
+;; (use-package monokai-theme
+;;   :ensure t)
+
+(use-package solarized-theme
   :ensure t)
 
 ; help
@@ -43,6 +46,9 @@
   (progn
     (helm-mode)
     (setq helm-buffers-fuzzy-matching t))
+  :ensure t)
+
+(use-package helm-helm-commands
   :ensure t)
 
 (use-package projectile
@@ -121,6 +127,11 @@
 (use-package emacs-lisp-mode
   :mode ("\\.el\\'" . emacs-lisp-mode)
   :interpreter ("emacs-lisp-mode" . emacs-lisp-mode))
+
+(use-package go-mode
+  :mode ("\\.go\\'" . go-mode)
+  :interpreter ("go-mode" . go-mode)
+  :ensure t)
 
 
 ; lisp
