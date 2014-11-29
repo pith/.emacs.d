@@ -3,7 +3,7 @@
 ;;; Commentary:
 
 ;; This init.el file use melpa and use-package for installation of packages.
-;; Currently the modes configured are lisp and markdown. You will find all
+;; Currently the modes configured are Lisp and markdown.  You will find all
 ;; installed packaged in the file load-package.el.
 
 ;; Install procedure:
@@ -42,21 +42,21 @@
 (package-initialize)
 
 ; Load external libraries
-(add-to-list 'load-path "~/.emacs.d/lib/use-package")
-(add-to-list 'load-path "~/.emacs.d")
-(require 'load-packages)
-; Load modes
+
+
+; Load config files
 (add-to-list 'load-path "~/.emacs.d/mode/")
+
+(require 'load-packages)
 (require 'pit-elisp-mode)
 
 ; Externalize customize configuration
-(setq custom-file "~/.emacs.d/custom.el")
+(setq custom-file "~/.emacs.d/mode/custom.el")
 (load custom-file 'noerror)
 
 ;;; Externalize the following line
 (require 'eldoc)
 
-(add-to-list 'load-path "~/.emacs.d/elisp/")
 (load-library "eldoc")
 (load-library "functions")
 (load-library "configure")
