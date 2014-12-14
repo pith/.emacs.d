@@ -12,7 +12,13 @@
 
 ; Vital packages
 
-
+(use-package yasnippet
+  :init (progn
+          (require 'yasnippet)
+          (setq yas/root-directory "~/.emacs.d/snippets")
+          (yas/load-directory yas/root-directory)
+          (yas-global-mode 1))
+  t)
 
 (use-package paredit
   :ensure t)
@@ -139,24 +145,27 @@
   :ensure t)
 
 (use-package emacs-lisp-mode
+  :init (progn
+          (defvar flycheck-emacs-lisp-load-path)
+          (setq flycheck-emacs-lisp-load-path load-path))
   :mode ("\\.el\\'" . emacs-lisp-mode)
   :interpreter ("emacs-lisp-mode" . emacs-lisp-mode))
 
 ;; Go config
 
-(use-package go-mode
-  :mode ("\\.go\\'" . go-mode)
-  :interpreter ("go-mode" . go-mode)
-  :ensure t)
+;; (use-package go-mode
+;;   :mode ("\\.go\\'" . go-mode)
+;;   :interpreter ("go-mode" . go-mode)
+;;   :ensure t)
 
-(setenv "GOPATH" "/Users/pith/dev/go/parisgo-work")
+;; (setenv "GOPATH" "/Users/pith/dev/go/parisgo-work")
 
 
-(use-package go-autocomplete
-  :ensure t)
+;; (use-package go-autocomplete
+;;   :ensure t)
 
-(use-package go-eldoc
-  :ensure t)
+;; (use-package go-eldoc
+;;   :ensure t)
   
 (use-package flycheck
   :init (global-flycheck-mode 1)

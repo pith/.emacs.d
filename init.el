@@ -29,6 +29,7 @@
     ; load proxy settings (should be done before loading  packages)
     (load "~/proxy")
     ; default indexing mode is not supported on windows
+    (defvar projectile-indexing-method)
     (setq projectile-indexing-method 'native)
   )
 
@@ -39,16 +40,16 @@
 (when (< emacs-major-version 24)
   ; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+
 (package-initialize)
 
-; Load external libraries
-
-
 ; Load config files
+
 (add-to-list 'load-path "~/.emacs.d/mode/")
 
 (require 'load-packages)
 (require 'pit-elisp-mode)
+(require 'custom-go-mode)
 
 ; Externalize customize configuration
 (setq custom-file "~/.emacs.d/mode/custom.el")
@@ -57,12 +58,11 @@
 ;;; Externalize the following line
 (require 'eldoc)
 
-(load-library "eldoc")
 (load-library "functions")
 (load-library "configure")
 
 ;; Auto complete
-(add-to-list 'load-path "/Users/pith/.emacs.d/")
+;(add-to-list 'load-path "/Users/pith/.emacs.d/")
 (require 'auto-complete-config)
 (add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
 (ac-config-default)

@@ -2,11 +2,13 @@
 
 
 ;;; Commentary:
-;; Bind org-capture on "C-c c". And specify the org-directory.
+;; Bind org-capture on "C-c c".  And specify the org-directory.
 
 ;;; Code:
+(defvar org-directory)
 (setq org-directory "~/notes")
 
+(defvar org-default-notes-file)
 (setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (require 'bind-key)
