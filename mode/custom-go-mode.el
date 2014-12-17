@@ -40,7 +40,9 @@
 ;(add-to-list 'load-path "$GOPATH")
 (add-to-list 'load-path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake"))
 
-(require 'go-flycheck)
+(use-package flycheck
+  :init (global-flycheck-mode 1)
+  :ensure t)
 
 ;; go get -u github.com/nsf/gocode
 (use-package go-eldoc

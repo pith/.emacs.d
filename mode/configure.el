@@ -7,6 +7,8 @@
 
 ; WindMove (http://www.emacswiki.org/emacs/WindMove)
 
+(require 'bind-key)
+
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 

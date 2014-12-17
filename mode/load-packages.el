@@ -151,26 +151,6 @@
   :mode ("\\.el\\'" . emacs-lisp-mode)
   :interpreter ("emacs-lisp-mode" . emacs-lisp-mode))
 
-;; Go config
-
-;; (use-package go-mode
-;;   :mode ("\\.go\\'" . go-mode)
-;;   :interpreter ("go-mode" . go-mode)
-;;   :ensure t)
-
-;; (setenv "GOPATH" "/Users/pith/dev/go/parisgo-work")
-
-
-;; (use-package go-autocomplete
-;;   :ensure t)
-
-;; (use-package go-eldoc
-;;   :ensure t)
-  
-(use-package flycheck
-  :init (global-flycheck-mode 1)
-  :ensure t)
-
 ; lisp
 
 (use-package elisp-slime-nav
