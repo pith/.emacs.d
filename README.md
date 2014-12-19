@@ -51,4 +51,4 @@ Specific key binding for OS X.
 
 ## Windows
 
-On Windows, the `init.el` will look for a `~/proxy` file. 
+On Windows, the `init.el` will look for a `~/.proxy.el` file. 
