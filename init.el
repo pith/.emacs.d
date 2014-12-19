@@ -27,7 +27,7 @@
   )
 (when (eq system-type 'windows-nt)
     ; load proxy settings (should be done before loading  packages)
-    (load "~/proxy")
+    (load "~/.proxy.el")
     ; default indexing mode is not supported on windows
     (setq projectile-indexing-method 'native)
   )
