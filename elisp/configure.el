@@ -1,7 +1,5 @@
 ; TODO reorganize this file.
-
-;Choose the theme
-(load-theme 'monokai t)
+(load-theme 'solarized-light t)
 
 ; WindMove (http://www.emacswiki.org/emacs/WindMove)
 (when (fboundp 'windmove-default-keybindings)
