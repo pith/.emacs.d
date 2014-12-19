@@ -1,7 +1,24 @@
+;;; load-packages.el --- This lisp file is use to load emacs packages with use-package library.
+
+;;; Commentary:
+;; 
+
+;;; Code:
+
+(add-to-list 'load-path "~/.emacs.d/lib/use-package")
+
 (require 'use-package)
 (require 'bind-key)
 
 ; Vital packages
+
+(use-package yasnippet
+  :init (progn
+          (require 'yasnippet)
+          (setq yas/root-directory "~/.emacs.d/snippets")
+          (yas/load-directory yas/root-directory)
+          (yas-global-mode 1))
+  t)
 
 (use-package paredit
   :ensure t)
@@ -13,6 +30,9 @@
 
 (use-package solarized-theme
   :ensure t)
+
+;Choose the theme
+(load-theme 'solarized-light t)
 
 ; help
 
@@ -42,7 +62,7 @@
 (use-package helm
   :bind (("C-x b" . helm-buffers-list)
 	 ("C-x C-f" . helm-find-files))
-  :init 
+  :init
   (progn
     (helm-mode)
     (setq helm-buffers-fuzzy-matching t))
@@ -125,14 +145,11 @@
   :ensure t)
 
 (use-package emacs-lisp-mode
+  :init (progn
+          (defvar flycheck-emacs-lisp-load-path)
+          (setq flycheck-emacs-lisp-load-path load-path))
   :mode ("\\.el\\'" . emacs-lisp-mode)
   :interpreter ("emacs-lisp-mode" . emacs-lisp-mode))
-
-(use-package go-mode
-  :mode ("\\.go\\'" . go-mode)
-  :interpreter ("go-mode" . go-mode)
-  :ensure t)
-
 
 ; lisp
 
@@ -152,33 +169,23 @@
 
 ; Global
 
-;; ido (https://github.com/gempesaw/ido-vertical-mode.el)
-(use-package ido-vertical-mode
-    :config
-    (progn
-      (ido-mode 1)
-      (ido-vertical-mode 1)
-      (setq ido-enable-flex-matching t)
-      )
-    :ensure t)
-
 ;; ibuffer (http://emacs-fu.blogspot.fr/2010/02/dealing-with-many-buffers-ibuffer.html)
 (use-package ibuffer
-  :init 
+  :init
   (progn
     (add-hook 'ibuffer-mode-hook
               (lambda ()
                 (ibuffer-switch-to-saved-filter-groups "default"))))
   :config
-  (progn 
+  (progn
     (setq ibuffer-saved-filter-groups
-	  (quote (("default"      
+	  (quote (("default"
 		   ("Org" ;; all org-related buffers
-		    (mode . org-mode))  
+		    (mode . org-mode))
 		   ("Emacs config"
 		    (filename . ".emacs.d/"))
 		     ("Markdown"
-		      (mode . markdown-mode))  
+		      (mode . markdown-mode))
 		     ("Mail"
 		      (or  ;; mail-related buffers
 		       (mode . message-mode)
@@ -192,27 +199,14 @@
 		       (mode . docker-mode)
 		       (mode . emacs-lisp-mode)
 		       ;; etc
-		       )) 
+		       ))
 		     ("ERC"   (mode . erc-mode))))))
     )
     :ensure t)
-
-;; Smex (https://github.com/nonsequitur/smex)
-;; (use-package smex
-;;     :config 
-;;     (progn
-;;       (smex-initialize)
-;;       ;; smex
-;;       (global-set-key (kbd "M-x") 'smex)
-;;       ;; Show only major mode commands
-;;       (global-set-key (kbd "M-X") 'smex-major-mode-commands)
-;;       ;; This is your old M-x.
-;;       (global-set-key (kbd "C-c C-c M-x") 'execute-extended-command)
-;;       )
-;;     :ensure t)
 
 (bind-key "M-x" 'helm-M-x)
 (bind-key "C-c C-l" 'helm-list-elisp-packages)
 
 (provide 'load-packages)
 
+;;; load-packages.el ends here

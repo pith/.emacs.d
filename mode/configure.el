@@ -1,7 +1,14 @@
-; TODO reorganize this file.
-(load-theme 'solarized-light t)
+;;; configure.el --- Global configuration of the emacs layout.
+
+;;; Commentary:
+;; TODO reorganize this file.
+
+;;; Code:
 
 ; WindMove (http://www.emacswiki.org/emacs/WindMove)
+
+(require 'bind-key)
+
 (when (fboundp 'windmove-default-keybindings)
   (windmove-default-keybindings))
 
@@ -9,7 +16,7 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ; UTF-8
-(setq locale-coding-system 'utf-8) 
+(setq locale-coding-system 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
@@ -21,7 +28,7 @@
 (setq indent-line-function 'insert-tab)
 
 ; Show column number
-(column-number-mode t)
+(global-linum-mode t)
 
 ; Enable auto-indent
 (bind-key "<RET>" 'newline-and-indent)
@@ -32,3 +39,7 @@
       `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
+
+(provide 'configure)
+
+;;; configure.el ends here
