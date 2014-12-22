@@ -31,7 +31,7 @@
 ;; http://yousefourabi.com/blog/2014/05/emacs-for-go/
 ;;
 
-(setenv "GOPATH" "/Users/pith/dev/go/parisgo-work")
+(setenv "GOPATH" "/Users/pith/dev/go/halgo-workspace")
 ;(setenv "PATH" (concat (getenv "PATH") ":" "/Users/pith/dev/go/parisgo-work/bin"  ":" "/usr/local/go/bin"))
 (setq exec-path (cons "/Users/pith/dev/go/parisgo-work/bin/" exec-path))
 (setq exec-path (cons "/usr/local/go/bin" exec-path))
