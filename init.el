@@ -43,6 +43,11 @@
 
 (package-initialize)
 
+; Enable auto insert
+(auto-insert-mode 't)
+(setq auto-insert-directory "~/.emacs.d/.auto-insert-mode/")
+(setq auto-insert-alist '((go-mode . "golang.go")))
+
 ; Load config files
 
 (add-to-list 'load-path "~/.emacs.d/mode/")

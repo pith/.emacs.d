@@ -37,6 +37,22 @@ This is just a start. But here is the list of useful key binding I don't want to
 
 * <kbd>C-c C-g</kbd> - git-status
 
+*Go mode*
+* <kbd>C-c C-r</kbd> go-remove-unused-imports
+* <kbd>C-c i</kbd> go-goto-imports
+* <kbd>M-.</kbd> godef-jump
+* <kbd>C-c C-j</kbd> godef-jump
+* <kbd>C-c C-c</kbd> go-errcheck
+* <kbd>C-c C-d</kbd> godoc-at-point
+* <kbd>C-c C-c</kbd> go-errcheck
+* <kbd>C-M-a</kbd> beginning-of-defun
+* <kbd>C-M-e</kbd> end-of-defun
+* mark-defun
+* go-play-buffer
+* go-play-region
+* compile - go test -coverprofile=c.out
+* go-coverage
+
 ## OS X
 
 Specific key binding for OS X.

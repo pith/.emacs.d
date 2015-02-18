@@ -13,9 +13,10 @@
             (setq tab-width 2)
             (setq standard-indent 2)
             (setq indent-tabs-mode -1)
+            (setq compile-command "go test -coverprofile=c.out")
 
-            (add-hook 'go-mode-hook
-                      (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
+            ;; (add-hook 'go-mode-hook
+            ;;           (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
             (add-hook 'go-mode-hook
                       (lambda () (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
             (add-hook 'go-mode-hook
@@ -23,22 +24,17 @@
             (add-hook 'go-mode-hook
                       (lambda () (local-set-key (kbd "<f3>") 'godef-jump)))
             (add-hook 'go-mode-hook
+                      (lambda () (local-set-key (kbd "M-.") 'godef-jump)))
+            (add-hook 'go-mode-hook
                       (lambda () (local-set-key (kbd "C-c C-c") 'go-errcheck)))
+            (add-hook 'go-mode-hook
+                      (lambda () (local-set-key (kbd "C-c C-d") 'godoc-at-point)))
             )
   :ensure t)
 
 ;; Go Oracle
 ;; http://yousefourabi.com/blog/2014/05/emacs-for-go/
 ;;
-
-(setenv "GOPATH" "/Users/pith/dev/go/parisgo-work")
-;(setenv "PATH" (concat (getenv "PATH") ":" "/Users/pith/dev/go/parisgo-work/bin"  ":" "/usr/local/go/bin"))
-(setq exec-path (cons "/Users/pith/dev/go/parisgo-work/bin/" exec-path))
-(setq exec-path (cons "/usr/local/go/bin" exec-path))
-;(setq exec-path (append exec-path (list (expand-file-name "/usr/local/go/bin/gofmt"))))
-
-;(add-to-list 'load-path "$GOPATH")
-(add-to-list 'load-path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake"))
 
 (use-package flycheck
   :init (global-flycheck-mode 1)
