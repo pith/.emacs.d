@@ -36,6 +36,14 @@
 ;; http://yousefourabi.com/blog/2014/05/emacs-for-go/
 ;;
 
+
+(setenv "GOPATH" "/Users/pith/dev/go/halgo-workspace")
+;(setenv "PATH" (concat (getenv "PATH") ":" "/Users/pith/dev/go/parisgo-work/bin"  ":" "/usr/local/go/bin"))
+(setq exec-path (cons "/Users/pith/dev/go/parisgo-work/bin/" exec-path))
+(setq exec-path (cons "/usr/local/go/bin" exec-path))
+(add-to-list 'load-path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake"))
+
+
 (use-package flycheck
   :init (global-flycheck-mode 1)
   :ensure t)
