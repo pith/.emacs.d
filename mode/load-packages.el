@@ -7,7 +7,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/lib/use-package")
 
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 (require 'bind-key)
 
 ; Vital packages
@@ -18,7 +19,7 @@
           (setq yas/root-directory "~/.emacs.d/snippets")
           (yas/load-directory yas/root-directory)
           (yas-global-mode 1))
-  t)
+  :ensure t)
 
 (use-package paredit
   :ensure t)
@@ -29,10 +30,8 @@
 ;;   :ensure t)
 
 (use-package solarized-theme
+  :config (load-theme 'solarized-dark t)
   :ensure t)
-
-;Choose the theme
-(load-theme 'solarized-light t)
 
 ; help
 

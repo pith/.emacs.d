@@ -32,7 +32,7 @@
 If the text after the cursor matches `electrify-return-match' then
 open and indent an empty line between the cursor and the text.  Move the
   cursor to the new line.
-Argument ARG ending block caracter (eg. ')' for lisp)."
+Argument ARG ending block caracter (eg. ')' for Lisp)."
     (interactive "P")
     (let ((case-fold-search nil))
       (if (looking-at electrify-return-match)
