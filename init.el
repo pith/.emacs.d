@@ -50,7 +50,9 @@
 
 ; Load config files
 
-(add-to-list 'load-path "~/.emacs.d/mode/")
+(add-to-list 'load-path "~/.emacs.d/third-party/use-package")
+(add-to-list 'load-path "~/.emacs.d/conf/")
+(add-to-list 'load-path "~/.emacs.d/source/")
 
 (require 'load-packages)
 (require 'pit-elisp-mode)
