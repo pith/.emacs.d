@@ -5,7 +5,7 @@
 
 ;;; Code:
 
-(add-to-list 'load-path "~/.emacs.d/lib/use-package")
+(add-to-list 'load-path "~/.emacs.d/third-party/use-package")
 
 (eval-when-compile
   (require 'use-package))
@@ -17,7 +17,7 @@
   :init (progn
           (require 'yasnippet)
           (setq yas/root-directory "~/.emacs.d/snippets")
-          (yas/load-directory yas/root-directory)
+          (yas-load-directory yas/root-directory)
           (yas-global-mode 1))
   :ensure t)
 
