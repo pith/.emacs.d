@@ -78,7 +78,10 @@
   :ensure t)
 
 (use-package helm-projectile
-  :bind ("C-c h" . helm-projectile)
+  :bind (("C-c h" . helm-projectile)
+         ("C-c p f" . helm-projectile-find-file)
+         ("C-c p p" . helm-projectile-switch-project)
+         ("C-c p b" . helm-projectile-switch-to-buffer))
   :ensure t)
 
 (use-package helm-swoop
