@@ -54,6 +54,8 @@
 (add-to-list 'load-path "~/.emacs.d/conf/")
 (add-to-list 'load-path "~/.emacs.d/source/")
 
+; TODO the following should be integrated with use-package
+
 (require 'load-packages)
 (require 'pit-elisp-mode)
 (require 'custom-go-mode)
