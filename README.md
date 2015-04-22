@@ -29,8 +29,8 @@ This is just a start. But here is the list of useful key binding I don't want to
 
 *Helm*
 * <kbd>M-x</kbd> - Replaced actual M-x
-* <kbd>C-c C-l</kdb> - helm-list-elisp-packages
-* <kdb>C-c h</kdb> - helm-projectile
+* <kbd>C-c C-l</kbd> - helm-list-elisp-packages
+* <kbd>C-c h</kbd> - helm-projectile
 * <kbd>M-i</kbd> - helm-swoop
 
 *Version control*
