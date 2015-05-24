@@ -15,8 +15,8 @@
             (setq indent-tabs-mode -1)
             (setq compile-command "go test -coverprofile=c.out")
 
-            ;; (add-hook 'go-mode-hook
-            ;;           (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
+            (add-hook 'go-mode-hook
+                      (lambda () (add-hook 'before-save-hook 'gofmt-before-save)))
             (add-hook 'go-mode-hook
                       (lambda () (local-set-key (kbd "C-c C-r") 'go-remove-unused-imports)))
             (add-hook 'go-mode-hook
@@ -36,10 +36,8 @@
 ;; http://yousefourabi.com/blog/2014/05/emacs-for-go/
 ;;
 
-
-(setenv "GOPATH" "/Users/pith/dev/go/halgo-workspace")
-;(setenv "PATH" (concat (getenv "PATH") ":" "/Users/pith/dev/go/parisgo-work/bin"  ":" "/usr/local/go/bin"))
-(setq exec-path (cons "/Users/pith/dev/go/parisgo-work/bin/" exec-path))
+(setenv "GOPATH" "/Users/pith/dev/go")
+(setq exec-path (cons (concat (getenv "GOPATH") "/bin") exec-path))
 (setq exec-path (cons "/usr/local/go/bin" exec-path))
 (add-to-list 'load-path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake"))
 
