@@ -11,26 +11,43 @@
   (require 'use-package))
 (require 'bind-key)
 
-; Vital packages
-
-(use-package yasnippet
-  :init (progn
-          (require 'yasnippet)
-          ;; (setq yas/root-directory "~/.emacs.d/snippets")
-          ;; (yas-load-directory yas/root-directory)
-          (yas-global-mode 1))
-  :ensure t)
-
-(use-package paredit
-  :ensure t)
-
 ; UI
 
-;; (use-package monokai-theme
+; Powerline (https://github.com/milkypostman/powerline)
+
+; In order to use the utf-8 support install patched fonts
+; (https://github.com/powerline/fonts)
+
+(use-package powerline
+  :init (progn
+          (setq powerline-default-separator 'utf-8)
+          (powerline-center-theme))
+  :ensure t)
+
+;;; Other mode-line lib (https://github.com/Malabarba/smart-mode-line)
+
+;; (use-package smart-mode-line-powerline-theme
+;;   :ensure t)
+
+;; (use-package smart-mode-line
+;;   :init (progn
+;;           (rich-minority-mode 1)
+;;           (add-to-list 'rm-whitelist "")
+;;           (setq sml/theme 'powerline)
+;;           (sml/setup))
 ;;   :ensure t)
 
 (use-package solarized-theme
   :config (load-theme 'solarized-dark t)
+  :ensure t)
+
+; Edit
+
+(use-package paredit
+  :ensure t)
+
+(use-package yasnippet
+  :init (yas-global-mode 1)
   :ensure t)
 
 ; help
