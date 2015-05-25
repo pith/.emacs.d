@@ -33,6 +33,8 @@
 ; Enable auto-indent
 (bind-key "<RET>" 'newline-and-indent)
 (bind-key "<C-return>" 'newline)
+(bind-key "C-," 'comment-or-uncomment-region)
+
 
 ;; store all backup and autosave files in the tmp dir
 (setq backup-directory-alist
