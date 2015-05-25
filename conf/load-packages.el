@@ -13,17 +13,6 @@
 
 ; UI
 
-; Powerline (https://github.com/milkypostman/powerline)
-
-; In order to use the utf-8 support install patched fonts
-; (https://github.com/powerline/fonts)
-
-(use-package powerline
-  :init (progn
-          (setq powerline-default-separator 'utf-8)
-          (powerline-center-theme))
-  :ensure t)
-
 ;;; Other mode-line lib (https://github.com/Malabarba/smart-mode-line)
 
 ;; (use-package smart-mode-line-powerline-theme
@@ -37,8 +26,26 @@
 ;;           (sml/setup))
 ;;   :ensure t)
 
+
+; Powerline (https://github.com/milkypostman/powerline)
+
+; In order to use the utf-8 support install patched fonts
+; (https://github.com/powerline/fonts)
+(use-package powerline
+  :init (progn
+          (setq powerline-default-separator 'utf-8)
+          ;; (custom-set-faces
+          ;;  '(mode-line ((t (:foreground "#030303" :background "#b58900" :box nil))))
+          ;;  '(mode-line-buffer-id ((t (:foreground "#030303" :box nil))))
+          ;;  '(mode-line-inactive ((t (:foreground "#f9f9f9" :background "#586e75" :box nil)))))
+          (powerline-center-theme))
+  :ensure t)
+
 (use-package solarized-theme
-  :config (load-theme 'solarized-dark t)
+  :config (progn
+            (setq solarized-high-contrast-mode-line t)
+            (setq x-underline-at-descent-line t)
+            (load-theme 'solarized-dark t))
   :ensure t)
 
 ; Edit

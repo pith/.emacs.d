@@ -2,6 +2,8 @@
 
 This is my personal emacs config which make an heavy use of `use-package` and `helm`.
 
+![screenshot](screenshot-2015-05-25.png)
+
 ## List of installed packages
 
 Packages are installed with `use-package.el`, if you want to see the list of package installed go look at `load-packages.el`.
