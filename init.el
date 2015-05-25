@@ -19,6 +19,10 @@
 (menu-bar-mode -1)
 (blink-cursor-mode 0)
 
+; Externalize customize configuration
+(setq custom-file "~/.emacs.d/mode/custom.el")
+(load custom-file 'noerror)
+
 ; Load system specific configuration
 (when (eq system-type 'darwin)
    ; Add special key binding
@@ -60,9 +64,6 @@
 (require 'pit-elisp-mode)
 (require 'custom-go-mode)
 
-; Externalize customize configuration
-(setq custom-file "~/.emacs.d/mode/custom.el")
-(load custom-file 'noerror)
 
 ;;; Externalize the following line
 (require 'eldoc)
