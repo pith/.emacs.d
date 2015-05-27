@@ -43,6 +43,7 @@ This is just a start. But here is the list of useful key binding I don't want to
 * <kbd>C-c C-r</kbd> go-remove-unused-imports
 * <kbd>C-c i</kbd> go-goto-imports
 * <kbd>M-.</kbd> godef-jump
+* <kbd>M-*</kbd> jump back
 * <kbd>C-c C-j</kbd> godef-jump
 * <kbd>C-c C-c</kbd> go-errcheck
 * <kbd>C-c C-d</kbd> godoc-at-point

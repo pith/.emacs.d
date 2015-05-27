@@ -41,7 +41,6 @@
 (setq exec-path (cons "/usr/local/go/bin" exec-path))
 (add-to-list 'load-path (concat (getenv "GOPATH") "/src/github.com/dougm/goflymake"))
 
-
 (use-package flycheck
   :init (global-flycheck-mode 1)
   :ensure t)
@@ -52,9 +51,6 @@
   :ensure t)
 
 (use-package go-autocomplete
-  :ensure t)
-
-(use-package go-snippets
   :ensure t)
 
 ;; go get github.com/kisielk/errcheck

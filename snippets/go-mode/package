@@ -1,0 +1,5 @@
+# -*- mode: snippet; require-final-newline: nil -*-
+# name: package
+# key: pack
+# --
+package {1:main}
